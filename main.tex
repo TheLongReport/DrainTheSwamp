@@ -1,15 +1,42 @@
-\documentclass[12pt]{article}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{geometry}
-\usepackage{tikz}
-\usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage{parskip}
-\geometry{margin=1in}
+\documentclass[12pt]{book}
 
-\title{Why We’re Losing—and How to Fix It: A Political Strategy Blueprint for Michigan Republicans}
-\author{Christopher Long, Michigan Republican Party Grassroots Vice Chair}
+\usepackage{amsmath, amssymb, tikz, graphicx, parskip, microtype, lmodern}
+\usepackage{ifthen}
+\newboolean{booklayout}
+\setboolean{booklayout}{false}  % Change this to false for 8.5x11 version
+
+\ifthenelse{\boolean{booklayout}}{
+  \pdfpagewidth=6in
+  \pdfpageheight=9in
+  \usepackage[paperwidth=6in, paperheight=9in,
+              inner=0.9in, outer=0.6in, top=1in, bottom=1in,
+              bindingoffset=0.2in]{geometry}
+}{
+  \pdfpagewidth=8.5in
+  \pdfpageheight=11in
+  \usepackage[letterpaper, margin=1in]{geometry}
+}
+
+\usepackage{hyperref}
+\hypersetup{
+    pdftitle={Why We’re Losing—and How to Fix It},
+    pdfauthor={Christopher Long},
+    pdfsubject={Michigan GOP Political Strategy},
+    pdfkeywords={Michigan, GOP, Republican, Politics, Strategy, Grassroots},
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\leftmark}
+\fancyhead[LO]{\rightmark}
+
+\title{Burn the Playbook: \\Reclaiming the Republican Party from the Inside Out}
+\author{Christopher Long\\Michigan Republican Party Grassroots Vice Chair}
 \date{\today}
 
 \begin{document}
@@ -17,14 +44,161 @@
 \maketitle
 
 
-\begin{abstract}
+
+
+% Copyright Page
+\newpage
+\thispagestyle{empty}
+\vspace*{4cm}
+\begin{center}
+    \textcopyright\ \the\year\ Christopher Lennis Long \\
+    All rights reserved.
+\end{center}
+
+\vspace{1cm}
+
+No part of this publication may be reproduced, stored in a retrieval system, or transmitted in any form or by any means—electronic, mechanical, photocopying, recording, or otherwise—without the prior written permission of the publisher, except in the case of brief quotations used in reviews, critical articles, or educational purposes.
+
+For rights inquiries, contact: \texttt{chris@grassrootsstrong.com}
+
+This book is a work of political analysis and opinion. Any resemblance to real persons, organizations, or events is entirely intentional.
+
+Printed in the United States of America.
+
+\vfill
+ISBN: \textit{(Insert ISBN if applicable)} \\
+First Edition
+
+% Dedication Page
+\newpage
+\thispagestyle{empty}
+\vspace*{6cm}
+\begin{center}
+    \emph{To everyone I call out in these pages—} \\
+    \emph{the consultants, the cowards, the careerists, and the kings of the status quo.} \\
+    \emph{You made this necessary.} \\
+    \vspace{0.5cm}
+    \emph{And to the Republican Party as a whole:} \\
+    \emph{consider this a mirror. Look hard.}
+\end{center}
+
+
+\chapter*{Author's Note}
+
+This book isn’t here to comfort you. It’s here to confront you. To drag our political dysfunction into the light and make damn sure you can't look away. Whether you're grassroots, leadership, donor class, delegate, or consultant—this is coming for you.
+
+I’ve spent years on the outside, watching the machine grind people up. I listened. I observed. I connected the dots that others ignored—hearing the quiet frustrations of delegates, the whispered regrets of activists, and the hollow spin of party elites. I didn’t just show up for a few skirmishes—I’ve studied the entire battlefield.
+
+Every sentence in this book is a scalpel and a sword—cutting through the lies, excuses, and ego trips that have held this movement hostage. If you feel personally called out as you read this? GOOD. That’s not a coincidence. That’s design.
+
+I am an equal opportunity offender—and I’m not here to make friends. I’m here to break the spell. To call out the bullshit—no matter who’s behind it.
+
+This is a guide for anyone who actually wants to win. Not just to feel good. Not to post memes. Not to fundraise off failure. But to reclaim the ground we’ve lost—and never give it back.
+
+So don’t read this like it’s another conservative vanity project. Read it like it’s a battle plan. Because that’s what it is. And if you can’t handle that—close the book and step aside.
+
+To everyone else: sharpen your resolve.
+
+Let’s fix this. Let’s fight. And this time, let’s finish the job.
+
+\vfill
+Christopher Long \\
+Grassroots Vice Chair, Michigan Republican Party
+
+
+
+
+\chapter*{Foreword}
+
+The Republican Party isn’t dead. But it is bleeding—slowly, publicly, and with an almost theatrical indifference from the very people who claim to be its champions.
+
+Cycle after cycle, we watch the same tragic performance: new energy enters the room, fired up, full of purpose, only to be drained, redirected, or destroyed by the very structure meant to welcome it. We tell good people to run for delegate, and then give them no training. We tell strong candidates to run for office, then hand them over to consultants who cash in on their naiveté and walk away unscathed when they lose. And we tell ourselves we’re the “party of the people,” while openly treating the people as a nuisance to be managed.
+
+This book was written to break that cycle—and break it loudly.
+
+What you’re about to read is not subtle. It’s not polished to make donors comfortable or consultants happy. It doesn’t tiptoe around sacred cows or political pecking orders. It is a direct, relentless, and unapologetic confrontation with the realities we’ve been too cowardly to name and too undisciplined to fix.
+
+And I’m not writing this from some ivory tower. I’m not one of the good old boys, I’m not in the inner circle, and I’ve never kissed the ring. I’m an outsider who got involved because I couldn’t stomach what I was watching anymore. I paid attention when others were playing games. I asked questions when others were posturing. I listened to delegates in back corners of conventions, to candidates venting their frustration in private, and to grassroots activists who were never invited to the strategy calls—only expected to show up and clap.
+
+What I found was a movement with the right heart—but the wrong leadership. The right instincts—but no coordination. The right passion—but zero plan.
+
+So I started documenting. Listening. Writing. And what began as notes turned into chapters, and those chapters turned into this book—a battle plan, a diagnosis, a reckoning. It is informed not just by my experience on the ground, but by years of studying our patterns of failure and the structural rot that enables them.
+
+Let me be clear: this is not just a book for the grassroots. This is a book for everyone in the Republican ecosystem who claims to care about winning. Candidates, consultants, donors, delegates, county chairs, district officers, state committee members—this is your mirror. Look at it. Then decide if you’re part of the solution or part of the problem.
+
+If you read this and feel called out—good. I meant to. If you find yourself offended—perfect. That means I struck a nerve. I’m not here to make anyone comfortable. I’m here to make them think. And act. And change.
+
+Because while we’re arguing over purity tests and personalities, the Left is winning elections, controlling institutions, and rewriting the future in their image. While we’re playing chess with each other, they’re flipping the board.
+
+And make no mistake—this is our fault.
+
+We’ve allowed it. We’ve tolerated mediocrity. We’ve made excuses for failure. We’ve whispered complaints behind closed doors but refused to confront it head on. We’ve prized loyalty to people over loyalty to principle. And worst of all, we’ve treated “winning” like a dirty word—something to be ashamed of if it involves compromise, coalition, or strategy.
+
+This book rejects all of that.
+
+It argues that we can win without selling our soul—but we have to be smart. We have to be ruthless with our strategy and righteous in our intent. We have to stop electing the loudest voices and start empowering the clearest thinkers. And we have to stop pretending that the people currently profiting from our dysfunction are going to magically fix it for us.
+
+They won’t. They can’t. They’re part of the problem.
+
+This is a book that punches in every direction, not because I enjoy conflict—but because conflict is necessary when the house is on fire and no one’s calling 911.
+
+To the consultants who ran three losing campaigns and still want your check—you’re in here. To the donors who only show up when their friend is running—you’re in here. To the self-righteous activists who would rather be “right” and lose than humble and victorious—you’re in here too. I’ve got smoke for everybody.
+
+And to the Republican Party itself: you’re not beyond saving, but you are beyond denial. The time for excuses is over. You don’t need a better slogan. You need a spine. And a plan.
+
+So take a deep breath, turn the page, and prepare to be uncomfortable.
+
+Because if this book does its job, you’ll never see the party the same way again.
+
+Let’s fix it. Or watch it fall.
+
+The choice is ours.
+
+\vfill
+Christopher Long \\
+Grassroots Vice Chair, Michigan Republican Party
+
+
+
+
+
+\tableofcontents
+
+\chapter{Introduction}
+
 For decades, conservatives have decried the corruption embedded in government, calling for reform under the popular mantra ``Drain the Swamp.'' However, too often, this slogan has been reduced to mere calls for removing individuals from office, without addressing the systemic incentive structures that enable corruption to regenerate. This paper argues that the ``swamp'' is not merely a collection of corrupt actors but the oversized pool of government funds that inherently attracts corruption. Using formal logic, case studies from Michigan, and a rational deduction, this paper demonstrates that reducing taxes and government budgets is the only sustainable path to reducing corruption. It calls on voters, activists, and grassroots Republicans to pressure candidates and legislators to commit to reducing taxes and budgets—and to primary those who refuse. This paper also examines how legislators are co-opted by corporate and special interests, and proposes a grassroots strategy to reclaim influence through voter-based accountability.
-\end{abstract}
 
+\subsection{A Personal Perspective}
 
-\clearpage 
+I did not become directly involved in party operations until 2023. I became a precinct delegate only in 2024. Why so late? Because until then, the Michigan Republican Party had done a terrible job at outreach. Unless you knew someone personally connected, entry into the party structure felt like an insider's club. That’s how I finally got involved—through a personal connection.
 
-\clearpage  
+Have I always voted Republican? Yes. Have I always voted in every election? No. Like many people of my generation, I used to skip primaries, thinking they didn’t matter. I didn’t see or hear from the candidates, I didn’t know them personally, and frankly, I didn’t think it made a difference.
+
+That changed in 2023 when the proposed Gotion battery plant in Mecosta County lit a fire in our local community. Suddenly, local elections mattered. We organized, we recalled officials, we replaced nearly an entire township board, we elected new county commissioners—and I became one of many new activists pulled into the fight.
+
+Some may read this and dismiss me: “How can someone who didn’t vote in every election be an officer of the party?” But I challenge you to read that again. Because I’m not unique. There are thousands of voters across Michigan just like me—Republicans by vote, disconnected by process, left outside the gates of the party.
+
+\subsection{Why I'm Here}
+
+Unlike many inside the party, I’m not here to make friends, join cliques, build a political career, or get selfies with candidates. I am here for one purpose: to ensure Republicans take back this state.
+
+That should be the goal of every officer, district chair, county committee member, and precinct delegate. We should all be working toward winning elections. Yet I’ve learned a hard truth: many inside the party don’t agree on that goal—or at least not on what it requires.
+
+Some are here to protect their local turf. Others are here for vanity, social status, or the illusion of influence. Too many have become comfortable with losing, as long as they keep their title or get invited to insider meetings. They treat the party like a club, not a campaign machine.
+
+We do not have the luxury of ego or apathy. Michigan is at stake.
+
+The Democrats are not merely advancing policy—we are watching a cultural, economic, and institutional transformation take place at every level of government. Meanwhile, too many in our own ranks are busy gatekeeping precincts, fighting internal feuds, or playing politics with the consultant class.
+
+We are not owed victory. We must earn it—and that means rebuilding our party as a serious, disciplined, and mission-driven political force.
+
+I didn’t step into this fight because I wanted to be liked. I stepped into it because I saw how broken the system is—from local township politics to the state convention floor—and I wasn’t willing to accept defeat as normal.
+
+The truth is this: I am one of the very people the party failed to reach for years. I didn’t feel welcome. I didn’t know how to get involved. I assumed the whole thing was rigged or irrelevant. And yet, here I am—because something changed. Because I saw that if we don’t step up, we lose everything.
+
+I am here because we can’t afford more closed doors, more insider drama, or more performative politics. We need a party that functions. That wins. That serves its voters, not its own internal factions.
+
+That’s why I’m here. And if you're reading this and feel the same urgency—then it's time we stop asking permission and start taking ground.
 
 \input{Part 1/part1.tex}
 \clearpage  
